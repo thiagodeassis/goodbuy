@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<resultMap type="Produto" id="produtoResult">
+
+	<id     column="ID"        property="id" />
+	<result column="NOME"      property="nome" />
+	<result column="DESCRICAO" property="descricao" />
+	<result column="PRECO"     property="preco" />
+</resultMap>
+
+<select id="pesquisa" resultMap="usuarioResult">
+	SELECT * FROM PRODUTOS
+</select>
+
+<select 
