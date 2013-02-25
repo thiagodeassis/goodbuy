@@ -2,16 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<resultMap type="Produto" id="produtoResult">
+<mapper namespace="Produto">
 
-	<id     column="ID"        property="id" />
-	<result column="NOME"      property="nome" />
-	<result column="DESCRICAO" property="descricao" />
-	<result column="PRECO"     property="preco" />
-</resultMap>
+	<resultMap type="Produto" id="produtoResult">
+		<id     column="id"        property="id" />
+		<result column="nome"      property="nome" />
+		<result column="descricao" property="descricao" />
+		<result column="preco"     property="preco" />
+	</resultMap>
 
-<select id="pesquisa" resultMap="usuarioResult">
-	SELECT * FROM PRODUTOS
-</select>
+	<select id="listarProdutos" resultMap="produtoResult">
+		SELECT * FROM produto
+	</select>
 
-<select 
+	<insert id="salva" parameterType="Produto">
+		INSERT INTO produto (nome, descricao, preco)
+		VALUES (#{nome}, #{descricao}, #{preco});
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			select last_insert_id() as id
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM produto WHERE id = #{id};
+	</delete>
+	
+	<update id="update" parameterType="Produto">
+        UPDATE produto
+        SET
+            nome = #{nome},
+            descricao = #{descricao},
+            preco = #{preco}
+        WHERE id = #{id};
+ 	</update>
+ </mapper>
