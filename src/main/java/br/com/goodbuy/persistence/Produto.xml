@@ -18,7 +18,7 @@
 	<insert id="salva" parameterType="Produto">
 		INSERT INTO produto (nome, descricao, preco)
 		VALUES (#{nome}, #{descricao}, #{preco});
-		<selectKey keyProperty="id" resultType="int" order="AFTER">
+		<selectKey keyProperty="id" resultType="long" order="AFTER">
 			select last_insert_id() as id
 		</selectKey>
 	</insert>

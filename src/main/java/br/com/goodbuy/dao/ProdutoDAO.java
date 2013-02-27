@@ -28,8 +28,8 @@ public class ProdutoDAO {
 		}
 	}
 	
-	public void cadastra(Produto produto){
-		SqlSession session = openSession();
+	public void salva(Produto produto){
+		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			session.insert("Produto.salva", produto);
 			session.commit();
@@ -39,7 +39,7 @@ public class ProdutoDAO {
 	}
 	
 	public void deletaPelo(int id){
-		SqlSession session = openSession();
+		SqlSession session = sqlSessionFactory.openSession();
 		try{
 			session.delete("Produto.deleteById", id);
 			session.commit();
@@ -49,7 +49,7 @@ public class ProdutoDAO {
 	}
 	
 	public void atualiza(Produto produto){
-		SqlSession session = openSession();
+		SqlSession session = sqlSessionFactory.openSession();
 		try{
 			session.update("Produto.update", produto);
 			session.commit();
@@ -58,8 +58,4 @@ public class ProdutoDAO {
 		}
 	}
 
-	private SqlSession openSession() {
-		SqlSession session = sqlSessionFactory.openSession();
-		return session;
-	}
 }
