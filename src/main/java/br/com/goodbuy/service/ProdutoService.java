@@ -31,6 +31,7 @@ public class ProdutoService {
 	}
 	
 	public void atualiza(Produto produto){
+		mapper.atualiza(produto);
 	}
 
 }

@@ -4,5 +4,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="Produto" type="br.com.goodbuy.model.Produto" />
+		<typeAlias alias="Usuario" type="br.com.goodbuy.model.Usuario"/>
 	</typeAliases>
 </configuration>

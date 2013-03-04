@@ -9,6 +9,8 @@ public interface ProdutoMapper {
 	void salva(Produto produto);
 	
 	void remove(Produto produto);
+	
+	void atualiza(Produto produto);
 
 	Produto carrega(Long id);
 

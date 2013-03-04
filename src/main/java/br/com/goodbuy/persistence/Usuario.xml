@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="br.com.goodbuy.mapper.UsuarioMapper">
+
+	<resultMap type="Usuario" id="result">
+		<id column="id" property="id" />
+		<result column="nome" property="nome" />
+	</resultMap>
+	
+	<insert id="cadastra" parameterType="Usuario">
+      
+		INSERT INTO usuario(id, nome) 
+		VALUES (#{id}, #{nome})
+		<selectKey keyProperty="id" resultType="long" order="AFTER">
+			select last_insert_id() as id
+		</selectKey>
+	</insert>
+	
+	<select id="carregaPor" parameterType="long" resultMap="result">
+		SELECT * FROM usuario WHERE id = #{id}
+	</select>
+</mapper>

@@ -31,11 +31,11 @@
 		SELECT * FROM produto WHERE id = #{id}
 	</select>
 	
-	<delete id="delete" parameterType="produto">
+	<delete id="remove" parameterType="Produto">
 		DELETE FROM produto WHERE id = #{id};
 	</delete>
 	
-	<update id="update" parameterType="Produto">
+	<update id="atualiza" parameterType="Produto">
         UPDATE produto
         SET
             nome = #{nome},
